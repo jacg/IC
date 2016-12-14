@@ -1,0 +1,4 @@
+This file was added by creating it in my home directory under the name
+INSERT-FILE-DEEP-INTO-HISTORY.txt and running the following command:
+
+git filter-branch --index-filter "cp ~/INSERT-FILE-DEEP-INTO-HISTORY.txt . && git add INSERT-FILE-DEEP-INTO-HISTORY.txt" -- --all
