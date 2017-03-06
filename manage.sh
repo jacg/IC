@@ -167,12 +167,14 @@ function clean {
     echo "Cleaning IC generated files:"
     C_FILES=`find . -name '*.c'`
     SOFILES=`find . -name '*.so'`
-    REMOVE="$C_FILES $SOFILES"
+    PYCACHE=`find . -name __pycache__`
+    PCFILES=`find . -name '*.pyc'`
+    REMOVE="$C_FILES $SOFILES $PYCACHE $PCFILES"
     if [ ! -z "${REMOVE// }" ]
     then
         for FILE in $REMOVE
         do
-            COMMAND="rm $FILE"
+            COMMAND="rm -rf $FILE"
             echo $COMMAND
             $COMMAND
         done
