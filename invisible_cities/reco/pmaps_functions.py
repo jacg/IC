@@ -7,11 +7,9 @@ from __future__ import print_function, division, absolute_import
 import numpy as np
 import pandas as pd
 import tables as tb
-import matplotlib.pyplot as plt
 from   invisible_cities.reco.pmaps_functions_c import df_to_pmaps_dict, df_to_s2si_dict
 import invisible_cities.core.core_functions as cf
 from   invisible_cities.database import load_db
-from   invisible_cities.core.mpl_functions import circles, set_plot_labels
 from   invisible_cities.core.system_of_units_c import units
 
 def load_pmaps(PMP_file_name):
@@ -56,56 +54,6 @@ def scan_s12(S12):
     for i in S12.keys():
         print('S12 number = {}, samples = {} sum in pes ={}'
               .format(i, len(S12[i][0]), np.sum(S12[i][1])))
-
-
-def plot_s12(S12, figsize=(6,6)):
-    """Plot the peaks of input S12.
-
-    S12 is a dictionary
-    S12[i] for i in keys() are the S12 peaks
-    """
-    plt.figure(figsize=figsize)
-
-    set_plot_labels(xlabel = "t (mus)",
-                    ylabel = "S12 (pes)")
-    xy = len(S12)
-    if xy == 1:
-        t = S12[0][0]
-        E = S12[0][1]
-        ax1 = plt.subplot(1, 1, 1)
-        ax1.plot(t/units.mus, E)
-    else:
-        x = 3
-        y = xy/x
-        if y % xy != 0:
-            y = int(xy/x) + 1
-        for i in S12.keys():
-            ax1 = plt.subplot(x, y, i+1)
-            t = S12[i][0]
-            E = S12[i][1]
-            plt.plot(t/units.mus, E)
-
-
-def plot_s2si_map(S2Si, cmap='Blues'):
-        """Plot a map of the energies of S2Si objects."""
-
-        DataSensor = load_db.DataSiPM(0)
-        radius = 2
-        xs = DataSensor.X.values
-        ys = DataSensor.Y.values
-        r = np.ones(len(xs)) * radius
-        col = np.zeros(len(xs))
-        for sipm in S2Si.values():
-            for nsipm, E in sipm.items():
-                ene = np.sum(E)
-                col[nsipm] = ene
-        plt.figure(figsize=(8, 8))
-        plt.subplot(aspect="equal")
-        circles(xs, ys, r, c=col, alpha=0.5, ec="none", cmap=cmap)
-        plt.colorbar()
-
-        plt.xlim(-198, 198)
-        plt.ylim(-198, 198)
 
 
 def scan_s2si_map(S2Si):
