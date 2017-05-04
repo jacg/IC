@@ -14,3 +14,11 @@ python-3.6:
     - export IC_PYTHON_VERSION=3.6
 
   <<: *parameters
+
+
+python-3.5:
+
+  before_script:
+    - export IC_PYTHON_VERSION=3.5
+
+  <<: *parameters
