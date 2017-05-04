@@ -1,0 +1,7 @@
+before_script:
+  - export IC_PYTHON_VERSION=3.6
+  - source manage.sh install ${IC_PYTHON_VERSION}
+
+arbitrary-job-name:
+  script:
+    - bash manage.sh run_tests
