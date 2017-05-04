@@ -15,6 +15,7 @@ function install {
     make_environment
     python_version_env
     compile_cython_components
+    git lfs pull
 }
 
 function install_conda {
@@ -68,6 +69,8 @@ function make_environment {
 
     cat <<EOF > ${YML_FILENAME}
 name: IC${PYTHON_VERSION}
+channels:
+- conda-forge
 dependencies:
 - python=${PYTHON_VERSION}
 - cython
@@ -81,6 +84,7 @@ dependencies:
 - jupyter
 - notebook
 - sphinx
+- git-lfs
 - pip:
   - hypothesis-numpy
   - flaky
@@ -93,7 +97,7 @@ EOF
 function python_version_env {
     # Activate the relevant conda env
     source activate IC${PYTHON_VERSION}
-    # Set IC environment variables and download database
+    # Set IC environment
     ic_env
 }
 
@@ -104,22 +108,12 @@ function work_in_python_version {
 }
 
 function run_tests {
-    # Ensure that the test database is present
-    if [ ! -f invisible_cities/database/localdb.sqlite3 ]; then
-        download_test_db
-    fi
-
-    # Run the test suite
+    # Run the test suite serially
     pytest -v
 }
 
 function run_tests_par {
-    # Ensure that the test database is present
-    if [ ! -f invisible_cities/database/localdb.sqlite3 ]; then
-        download_test_db
-    fi
-
-    # Run the test suite
+    # Run the test suite in parallel where possible
     pytest -v -n auto -m "not serial"
     pytest -v         -m      serial
 }
@@ -147,11 +141,6 @@ function show_ic_env {
     echo ICDIR set to $ICTDIR
     echo ICDIR set to $ ICDIR
     echo PYTHONPATH set to $PYTHONPATH
-}
-
-function download_test_db {
-    echo Downloading database
-    python $ICDIR/database/download.py
 }
 
 function compile_cython_components {
