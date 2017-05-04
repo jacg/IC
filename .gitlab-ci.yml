@@ -1,7 +1,17 @@
-before_script:
-  - export IC_PYTHON_VERSION=3.6
-  - source manage.sh install ${IC_PYTHON_VERSION}
+python-3.6:
 
-arbitrary-job-name:
+  before_script:
+    - export IC_PYTHON_VERSION=3.6
+    - source manage.sh install ${IC_PYTHON_VERSION}
+
+  script:
+    - bash manage.sh run_tests
+
+python-3.5:
+
+  before_script:
+    - export IC_PYTHON_VERSION=3.5
+    - source manage.sh install ${IC_PYTHON_VERSION}
+
   script:
     - bash manage.sh run_tests
