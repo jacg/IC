@@ -4,10 +4,8 @@
 #   Template      parameters
 .build_and_test: &parameters
 
-  before_script:
-    - source manage.sh install ${IC_PYTHON_VERSION}
-
   script:
+    - source manage.sh install ${IC_PYTHON_VERSION}
     - bash manage.sh run_tests
 
 python-3.6:
