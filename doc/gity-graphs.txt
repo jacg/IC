@@ -1,0 +1,93 @@
+Here is a graphical representation of what the cities did
+approximately, sometime around April 2017. View it in a proportional
+font with window width of at least 180 characters.
+
++ UPPERCASE words describe different kinds of data, which could be
+  represented by different concrete Python types.
+
++ lowercase names describe different transformations, which are
+  naturally implemented as Python functions or coroutines or some
+  other callables.
+
+Now imagine a paradise where the actual source code of the cities
+looks more like this, than its current form. It's probably best to
+adapt it to Python syntax, so the top line in Diomira might look
+something like this:
+
+    push(source = read_wf(filename),
+         pipe   = fork(pipe(simulate_pmt, write_wf(which_table)),
+                       pipe(   ideal_pmt, write_wf(which_table))))
+
+As an added bonus, if the source code looks like the above, then it
+will be relatively easy to produce beautiful coloured graphs (prettier
+versions of those below) from it automatically.
+
+
+                                                             Isidora
+
+ PMT RWF-------------------read_wf------------------RWF------------------correct_pmt-------------------RWF------------------write_wf------------------PMT CWF
+SIPM RWF---------------------------------------------------------------------------------------------------------------------------------------------SIPM RWF
+MC TRACK---------------------------------------------------------------------------------------------------------------------------------------------MC TRACK
+RUN INFO---------------------------------------------------------------------------------------------------------------------------------------------RUN INFO
+
+
+                                                             Diomira
+
+                                                        ----------------simulate_pmt-------------------RWF------------------write_wf------------------PMT RWF
+                                                       /
+MC PMTRD------------------read_wf-------------------RWF-------------------ideal_pmt--------------------RWF------------------write_wf------------------PMT CWF
+MC SIPM-------------------read_wf-------------------RWF-----------------simulate_sipm------------------RWF------------------write_wf-----------------SIPM RWF
+MC TRACK---------------------------------------------------------------------------------------------------------------------------------------------MC TRACK
+RUN INFO-----get_run_and_event_info---------RUN_INFO------------gen_uniq_evt_no_from_file_hash------RUN_INFO----------run_and_event_writer-----------RUN INFO
+FEE TBL----------------------------------------------------------------------------------------------------------------------------------------------FEE TBL
+
+
+                                                              Cecilia
+
+ PMT RWF---read_wf---RWF---correct_pmt---RWF---find_peaks---PEAKS---trigger_emulation_filter---RWF---write_wf---PMT RWF
+                                                                   /
+                                                     TRIGGER PARAMS---------------------------------------------TRIGGER  Must be added as input everwhere else
+SIPM RWF--------------------------------------------------------------------------------------------------------SIPM RWF
+MC TRACK--------------------------------------------------------------------------------------------------------MC TRACK
+RUN INFO--------------------------------------------------------------------------------------------------------RUN INFO
+
+
+                                                              Irene
+
+ PMT RWF----read_wf----RWF----correct_pmt----RWF----sum_calibrated_pmt----PMTSUM---zero_suppress_PMT---PMTSUM--find_s1s2---S1S2-----------------------PMAPS---write_pmaps---PMAPS
+                                                                                                                                \                  /
+SIPM RWF----read_wf----RWF------------------------------calibrate_sipm----RWF------zero_suppress_SIPM---RWF----------------------compute_s2si--S2Si
+MC TRACK--------------------------------------------------------------------------------------------------------------------------------------------------------------------MC TRACK
+RUN INFO--------------------------------------------------------------------------------------------------------------------------------------------------------------------RUN INFO
+
+
+                                                              Dorotea
+
+   PMAPS----read_pmaps----PMAPS----filter_1s1----PMAPS----compute_kdst----KDST---write_kdst-----KDST
+                                                          /
+RUN INFO----read_run_info------RUN INFO-------------------
+MC TRACK----------------------------------------------------------------------------------------MC TRACK
+
+
+                                                               Zaira
+
+KDST---read_kdst---KDST---filter---KDST----compute_correction_table---CORRECTION_MATRIX----write_correction_matrix---CORRECTION_MATRIX
+
+
+
+                                                            Penthesilea
+
+PMAPS---read_pmaps---PMAPS---filter---PMAPS----------------------------------------write_pmaps-----PMAPS
+                                           \
+                                            compute_hits---HITS---paolina--TRACKS--write_tracks----TRACKS
+MC TRACK-------------------------------------------------------------------------------------------MC TRACK
+RUN INFO-------------------------------------------------------------------------------------------RUN INFO
+
+
+
+                                             Zoe (now absorbed in Penthesilea)
+
+   PMAPS--------------------------------------------------------------------------------PMAPS
+    HITS----read_hits----paolina----TRACKS---correct_tracks---TRACKS----write_tracks----TRACKS
+MC TRACK--------------------------------------------------------------------------------MC TRACK
+RUN INFO--------------------------------------------------------------------------------RUN INFO
