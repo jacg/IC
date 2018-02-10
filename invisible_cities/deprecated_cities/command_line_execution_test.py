@@ -22,7 +22,7 @@ def test_command_line_run(city, tmpdir_factory):
     temp_dir = tmpdir_factory.mktemp('output_files')
     out_file_name = join(temp_dir, city+'.out')
     # The actual command that we want to test
-    command = ('city {city} {config_file_name} -o {out_file_name}'
+    command = ('deprecated_city {city} {config_file_name} -o {out_file_name}'
                .format(**locals()))
     try:
         check_output(command, shell = True, stderr=STDOUT)
@@ -39,7 +39,7 @@ def test_run_irene_with_deamons(tmpdir_factory):
     temp_dir = tmpdir_factory.mktemp('output_files')
     out_file_name = join(temp_dir, 'irene.out')
     # The actual command that we want to test
-    command = ('city irene {config_file_name} -o {out_file_name}'
+    command = ('deprecated_city irene {config_file_name} -o {out_file_name}'
                .format(**locals()))
     try:
         check_output(command, shell = True, stderr=STDOUT)

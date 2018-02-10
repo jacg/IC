@@ -5,7 +5,7 @@ from importlib import import_module
 
 _, *args = argv
 
-city_dirs = [ 'cities', 'calib' ]
+city_dirs = [ 'deprecated_cities', 'calib' ]
 
 city_name = args[0]
 

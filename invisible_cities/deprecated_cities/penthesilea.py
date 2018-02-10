@@ -8,8 +8,8 @@ last revised: JJGC, September-2017
 
 from argparse import Namespace
 
-from .. io.hits_io         import hits_writer
-from .. cities.base_cities import HitCity
+from .. io.hits_io                    import hits_writer
+from .. deprecated_cities.base_cities import HitCity
 
 class Penthesilea(HitCity):
     """Read PMAPS and produces a HDST"""

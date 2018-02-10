@@ -20,8 +20,8 @@ from .. io.run_and_event_io    import run_and_event_writer
 from .. icaro.hst_functions    import shift_to_bin_centers
 from .. reco                   import calib_sensors_functions as csf
 
-from ..  cities.base_cities import CalibratedCity
-from ..  cities.base_cities import EventLoop
+from .. deprecated_cities.base_cities import CalibratedCity
+from .. deprecated_cities.base_cities import EventLoop
 
 
 class Sipmpdf(CalibratedCity):
