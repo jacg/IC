@@ -8,11 +8,8 @@ from subprocess import STDOUT
 from pytest import mark
 
 @mark.slow
-# @mark.parametrize('city',
-#                   'diomira isidora irene dorothea zaira penthesilea'.split())
-# TODO understand what's wrong with isidora (in Travis)
 @mark.parametrize('city',
-                  'diomira irene dorothea zaira penthesilea zemrude'.split())
+                  'isidora irene dorothea penthesilea diomira zaira zemrude'.split())
 
 def test_command_line_run(city, tmpdir_factory):
     ICTDIR = getenv('ICTDIR')
