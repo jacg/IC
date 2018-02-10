@@ -31,7 +31,7 @@ def test_sipmpdf_electrons_40keV(config_tmpdir, ICDATADIR):
 
     nrequired  = 2
 
-    conf = configure('dummy invisible_cities/config/sipmpdf.conf'.split())
+    conf = configure('dummy invisible_cities/config/deprecated_sipmpdf.conf'.split())
     conf.update(dict(run_number   = 0,
                      files_in     = PATH_IN,
                      file_out     = PATH_OUT,

@@ -16,7 +16,7 @@ from .. io.mchits_io           import load_mchits
 def test_penthesilea_KrMC(KrMC_pmaps_filename, KrMC_hdst, config_tmpdir):
     PATH_IN   = KrMC_pmaps_filename
     PATH_OUT  = os.path.join(config_tmpdir,'Kr_HDST.h5')
-    conf      = configure('dummy invisible_cities/config/penthesilea.conf'.split())
+    conf      = configure('dummy invisible_cities/config/deprecated_penthesilea.conf'.split())
     nevt_req  = 10
 
     DF_TRUE =  KrMC_hdst.true
@@ -41,7 +41,7 @@ def test_dorothea_filter_events(config_tmpdir, Kr_pmaps_run4628_filename):
 
     PATH_OUT = os.path.join(config_tmpdir, 'KrDST_4628.h5')
     nrequired = 50
-    conf = configure('dummy invisible_cities/config/penthesilea.conf'.split())
+    conf = configure('dummy invisible_cities/config/deprecated_penthesilea.conf'.split())
     conf.update(dict(run_number = 4628,
                      files_in   = PATH_IN,
                      file_out   = PATH_OUT,
@@ -99,7 +99,7 @@ def test_penthesilea_produces_tracks_when_required(KrMC_pmaps_filename, KrMC_hds
                                                    outputfilename):
     PATH_IN   = KrMC_pmaps_filename
     PATH_OUT  = os.path.join(config_tmpdir, outputfilename)
-    conf      = configure('dummy invisible_cities/config/penthesilea.conf'.split())
+    conf      = configure('dummy invisible_cities/config/deprecated_penthesilea.conf'.split())
     nevt_req  = 10
 
     conf.update(dict(files_in        = PATH_IN,

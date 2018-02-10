@@ -17,7 +17,7 @@ from pytest import mark
 def test_command_line_run(city, tmpdir_factory):
     ICTDIR = getenv('ICTDIR')
     # Use the example config file included in the repository
-    config_file_name = join(ICTDIR, 'invisible_cities/config', city+'.conf')
+    config_file_name = join(ICTDIR, 'invisible_cities/config', 'deprecated_'+city+'.conf')
     # Ensure that output does not pollute: send it to a temporary dir
     temp_dir = tmpdir_factory.mktemp('output_files')
     out_file_name = join(temp_dir, city+'.out')
@@ -34,7 +34,7 @@ def test_command_line_run(city, tmpdir_factory):
 def test_run_irene_with_deamons(tmpdir_factory):
     ICTDIR = getenv('ICTDIR')
     # Use the example config file included in the repository
-    config_file_name = join(ICTDIR, 'invisible_cities/config/irene_daemon_example.conf')
+    config_file_name = join(ICTDIR, 'invisible_cities/config/deprecated_irene_daemon_example.conf')
     # Ensure that output does not pollute: send it to a temporary dir
     temp_dir = tmpdir_factory.mktemp('output_files')
     out_file_name = join(temp_dir, 'irene.out')

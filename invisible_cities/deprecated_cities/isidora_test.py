@@ -33,7 +33,7 @@ def test_isidora_electrons_40keV(config_tmpdir, ICDIR):
 
     nrequired  = 2
 
-    conf = configure('dummy invisible_cities/config/isidora.conf'.split())
+    conf = configure('dummy invisible_cities/config/deprecated_isidora.conf'.split())
     conf.update(dict(run_number   = 0,
                      files_in     = PATH_IN,
                      file_out     = PATH_OUT,
