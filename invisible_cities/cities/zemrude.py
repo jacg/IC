@@ -16,13 +16,13 @@ from .. reco                import calib_sensors_functions as csf
 
 from .. dataflow import dataflow as fl
 
-from .. liquid_cities.components   import city
-from .. liquid_cities.components   import WfType
-from .. liquid_cities.components   import print_every
-from .. liquid_cities.components   import sensor_data
-from .. liquid_cities.components   import wf_from_files
-from .. liquid_cities.components   import calibrate_with_mau
-from .. liquid_cities.components   import calibrate_with_mean
+from .  components import city
+from .  components import WfType
+from .  components import print_every
+from .  components import sensor_data
+from .  components import wf_from_files
+from .  components import calibrate_with_mau
+from .  components import calibrate_with_mean
 
 
 @city

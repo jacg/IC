@@ -15,7 +15,7 @@ from . configure import make_config_file_reader
 from . exceptions import NoInputFiles
 from . exceptions import NoOutputFile
 
-from .. liquid_cities.components  import city
+from ..cities.components import city
 
 
 config_file_format = """
