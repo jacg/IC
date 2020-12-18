@@ -1,3 +1,5 @@
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
 # IC: Invisible Cities
 
 IC stands for Invisible Cities and also for Italo Calvino, the author of the master piece.
