@@ -15,6 +15,8 @@ jobs:
         python-version: [37, 38]
         platform: [ubuntu-18.04, macos-latest]
     runs-on: ${{ matrix.platform }}
+    env:
+      TERM: xterm-256color
 
     steps:
     - uses: actions/checkout@v2
@@ -27,4 +29,4 @@ jobs:
     - name: Install IC
       run: nix-shell --argstr py ${{ matrix.python-version }}
     - name: Run tests
-      run: nix-shell --argstr py ${{ matrix.python-version }} --run "PYTEST_ADDOPTS=--color=yes ic-test-par"
+      run: nix-shell --argstr py ${{ matrix.python-version }} --run ic-test-par
